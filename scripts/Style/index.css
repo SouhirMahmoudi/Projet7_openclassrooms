@@ -1,0 +1,12 @@
+.index{
+  margin: 42px 100px;
+}
+
+.index header {
+  display: flex;
+  justify-content: center;
+}
+
+.card{
+    width:18rem;
+}
