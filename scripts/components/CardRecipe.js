@@ -24,33 +24,38 @@ export default class CardRecipe extends Component {
     render() {
         this.DOM.innerHTML = `
       <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
+      <div class="card-body">
      <div class="card-title"> 
      <h2> ${this.name} </h2>
-     <aside> ${this.time}</aside>
-     
+     <aside> <i class="fas fa-clock"></i> ${this.time}</aside>
      </div>
         <div class="card-text">
-            <p class="ingredients"> ${this.showIngredients} </p>
-             <p class="recette"> </p>
+            <p class="listIngredients"> ${this.showIngredients()} </p>
+             <p class="recette"> ${this.description} </p>
         </div>
   </div> ` ;
     }
 
     showIngredients() {
-        if (this.ingredients.quantity == undefined) {
-            return `${this.ingredients.ingredient}`
-        }
-        else if (this.ingredients.unit == undefined) {
-            return `${this.ingredients.ingredient} + ": " + ${this.ingredients.quantity}`;
-        } 
-        else if (ingredients.unit == "grammes") {
-            return `${this.ingredients.ingredient} + ": " + ${this.ingredients.quantity} + "g"`;
-        } 
-        else {
-            return `${this.ingredients.ingredient} + ": " + ${this.ingredients.quantity} + ${this.ingredients.unit} `;
-        }
+
+        let result= "";
+        for (let ingredient of this.ingredients){
+
+            if (ingredient.quantity == undefined) {
+                result +=`<span class="ingredients">${ingredient.ingredient}</span>`
+            }
+            else if (ingredient.unit == undefined) {
+                result +=`<span class="ingredients">${ingredient.ingredient} : ${ingredient.quantity}</span>`;
+            }
+            else if (ingredient.unit == "grammes") {
+                result +=`<span class="ingredients">${ingredient.ingredient} :  ${ingredient.quantity} g</span>`;
+            }
+            else {
+                result +=`<span class="ingredients">${ingredient.ingredient} :  ${ingredient.quantity} ${ingredient.unit}</span> `;
+            }
     
+        }
+       return result;
 
     }
 }
