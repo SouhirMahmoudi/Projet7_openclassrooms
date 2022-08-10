@@ -23,7 +23,7 @@ export default class CardRecipe extends Component {
 
     render() {
         this.DOM.innerHTML = `
-      <img class="card-img-top" src="..." alt="Card image cap">
+      <img class="card-img-top" src="/Projet7_openclassrooms/assets/images/recette.png" alt="Card image cap">
       <div class="card-body">
      <div class="card-title"> 
      <h2> ${this.name} </h2>
