@@ -1,5 +1,5 @@
 import Component from "../factories/Component.js";
-export default class CardRecipe extends Component {
+export default class SearchBar extends Component {
     constructor(DOMtarget) {
         super(DOMtarget, "searchbar", "div");
         this.DOM.className = "bar";
