@@ -44,13 +44,13 @@ p.recette {
   padding-right: 1em;
 }
 p.recette:before {
-  content: '...';
+  content: "...";
   position: absolute;
   right: 0;
   bottom: 0;
 }
 p.recette:after {
-  content: '';
+  content: "";
   position: absolute;
   right: 0;
   width: 1em;
@@ -65,5 +65,40 @@ p.listIngredients {
   line-height: 14.4px;
   display: flex;
   flex-direction: column;
-
+}
+input#searchBar {
+  width: 100%;
+  background: #e7e7e7;
+}
+div#components_searchbar {
+  display: flex;
+}
+button#btnSearch {
+  border: none;
+  margin-left: -28px;
+  background: transparent;
+}
+.dropdown-menu.show {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 397px;
+  width: 667px;
+  left: 0px;
+  top: 0px;
+  border-radius: 5px;
+}
+.dropdown-item {
+  display: block;
+  width: 33% !important;
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+div#tag {
+  display: flex;
+  justify-content: space-between;
 }
