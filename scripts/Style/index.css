@@ -1,4 +1,4 @@
-.index{
+.index {
   margin: 42px 100px;
 }
 
@@ -7,6 +7,63 @@
   justify-content: center;
 }
 
-.card{
-    width:18rem;
+.card {
+  width: 380px;
+}
+
+div#listCard {
+  display: FLEX;
+  flex-wrap: WRAP;
+  justify-content: SPACE-BETWEEN;
+}
+.card-title h2 {
+  font-size: 18px;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+p.recette {
+  max-height: 109px;
+  width: 171px;
+  line-height: 12px;
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  max-height: 6em;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+}
+p.recette:before {
+  content: '...';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+p.recette:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+}
+
+p.listIngredients {
+  height: 105px;
+  width: 171px;
+  line-height: 14.4px;
+  display: flex;
+  flex-direction: column;
+
 }

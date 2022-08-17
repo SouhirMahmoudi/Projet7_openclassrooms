@@ -50,10 +50,10 @@ function DisplayUstensiles(liste) {
         target4.insertAdjacentHTML('afterbegin', `<a class="dropdown-item">${elm}</a>`))
 
 }
-
+let appareilFilter = new Appareils(Target2, recipes);
 //tags appareils,au click afficher tous les appareils et changer le placeholder
 
-let result2 =[];
+/*let result2 =[];
 recipes.forEach(recipe => {
             result2.push(recipe.appliance)
          })
@@ -68,7 +68,7 @@ function DisplayAppareils(liste){
 
       })
 
-}
+}*/
 
 
 const target = document.getElementById("listCard");
@@ -85,11 +85,9 @@ const searchBar = document.getElementById("searchBar");
 searchBar.addEventListener("keyup", function (e) {
     let value = searchBar.value.toLowerCase();
     let result = [];
-    let result2=[];
-    let result3=[];
-    let result4=[];
-    result2 = Array.from(ingredientsList).filter(ingredient => ingredient.toLowerCase().includes(value));
-    DisplayIngredients(result2);
+
+   // result2 = Array.from(ingredientsList).filter(ingredient => ingredient.toLowerCase().includes(value));
+   // DisplayIngredients(result2);
     for (let recipe of recipes) {
     
         if ((recipe.name.toLowerCase().includes(value)) || (recipe.description.toLowerCase().includes(value))
@@ -100,8 +98,12 @@ searchBar.addEventListener("keyup", function (e) {
         }
         
     }
+    appareilFilter.props = result;
+    appareilFilter.GetApplianceList();
+    
+
     DisplayRecipes(result)
-    for (let recipe of result){
+   /* for (let recipe of result){
         result3.push(recipe.appliance)
     }
     let newAppareils = new Set(result3);
@@ -111,7 +113,7 @@ searchBar.addEventListener("keyup", function (e) {
         result4.push(recipe.ustensils)
     }
     let newUstensiles = new Set(result4);
-    DisplayUstensiles(newUstensiles);
+    DisplayUstensiles(newUstensiles);*/
     
 })
 

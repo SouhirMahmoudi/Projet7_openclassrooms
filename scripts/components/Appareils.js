@@ -2,10 +2,13 @@
 import Component from "../factories/Component.js";
 
 export default class Appareils extends Component{
+    
     constructor(DOMtarget, props) {
         super(DOMtarget, "appareilsTag", "div", props);
         this.DOM.className = "appareilsTag";
         this.props=props;
+        this.appareils=[];
+        this.GetApplianceList();
 
 
     }
@@ -13,60 +16,41 @@ export default class Appareils extends Component{
     render(){
         this.DOM.innerHTML = `
         <div class="btn-group">
-        <input  type="text" id ="btnOpen2" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-        "
+        <input  type="text" id="btnOpen2" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        " 
         placeholder= "Appareils" />
         <div class="dropdown-menu" id="menuAppareils">
         </div> 
 `
+document.querySelector("#btnOpen2").addEventListener("click",(e) =>{
+    this.AfficherAppareils()
+})
 
     }
-}
-    /*AfficherIngredients(props){
-       const target=document.getElementById("menuIngredients");
-       let liste= this.ShowIngredients(props);
 
-      liste.forEach(elm=>{
-        target.insertAdjacentText(target, `<a class="dropdown-item">${elm}</a>`)
+    AfficherAppareils(){
+       const target=document.getElementById("menuAppareils");
+       target.innerHTML="";
+      this.appareils.forEach(elm=>{
+        target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
 
       })
 
     }
-}
+ 
 
-   /* ShowIngredients(props){
-        let result =[];
-        props.forEach(recipe => {
-            
-                    result.push(recipe.appliance)
-                 })
-                 
-        let ingredientsList = new Set(result).sort()     
-        
-        return ingredientsList;  
-    }
+GetApplianceList(){
+    this.appareils=[];
+    this.props.forEach(recipe=>{
+      this.appareils.push(recipe.appliance)
+    }) 
+    this.appareils=[...new Set(this.appareils)]
+}
 
 }
 
-    /*
-
-    constructor(props) {
-        const Target = document.getElementById("tag");
-        this.DOM = document.createElement("div");
-        Target.appendChild(this.DOM);
-        this.DOM.innerHTML = `
-        <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       Ingredients </button>
-     
-        <div class="dropdown-menu" id="menuIngredients">
-        </div> 
-`
-     const Target2 = document.getElementById("menuIngredients");
-     
-
-    }
-
+    
+   
 
 
 
