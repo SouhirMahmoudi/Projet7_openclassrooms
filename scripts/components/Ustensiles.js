@@ -1,69 +1,78 @@
 
 import Component from "../factories/Component.js";
 
-export default class Ustensils extends Component{
-    constructor(DOMtarget){
+export default class Ustensils extends Component {
+    constructor(DOMtarget, props) {
         super(DOMtarget, "UstensilesTag", "div");
         this.DOM.className = "UstensilesTag";
-       
+        this.props = props;
+        this.ustensils = [];
+        this.GetUstensilsList();
+
+
 
     }
 
-    render(){
+    render() {
         this.DOM.innerHTML = `
         <div class="btn-group">
-        <input type="text" id="btnOpen1" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" placeholder="Ustensiles" />
+        <button type="text" id="btnOpen1" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ustensiles</button>
         <div class="dropdown-menu" id="menuUstensiles">
         <p> </p>
         </div> 
 `
+        const btn1 = document.querySelector("#btnOpen1");
+        btn1.addEventListener("click", (e) => {
+            this.AfficherUstensils()
+            btn1.innerHTML="<input type='text' placeholder ='Rechercher un ustensil' id='searchUstensils' />"
+            btn1.classList.toggle("dropdown-rotate");
+        })
 
     }
+
+
+    AfficherUstensils() {
+        const target = document.getElementById("menuUstensiles");
+        target.innerHTML = "";
+
+
+        this.ustensils.forEach(elm => {
+            target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
+
+        })
+
+    }
+
+    GetUstensilsList() {
+        this.ustensils = [];
+        this.props.forEach(recipe => {
+            recipe.ustensils.forEach(elm => {
+                this.ustensils.push(elm)
+            })
+        })
+        this.ustensils = [...new Set(this.ustensils)]
+    }
+
+
 }
-
-   /* AfficherIngredients(props){
-        const target=document.getElementById("menuIngredients");
-        let liste= this.ShowIngredients(props);
- 
-       liste.forEach(elm=>{
-         target.insertAdjacentText(target, `<a class="dropdown-item">${elm}</a>`)
- 
-       })
- 
-     }
- 
-     ShowIngredients(props){
-         let result =[];
-         props.forEach(recipe => {
-             recipe.ustensils.forEach(elm => {
-                     result.push(elm)
-                  })
-                  })
-         let ingredientsList = new Set(result).sort()     
-         
-         return ingredientsList;  
-     }
-
-}
-
     /*
 
-    constructor(props) {
-        const Target = document.getElementById("tag");
-        this.DOM = document.createElement("div");
-        Target.appendChild(this.DOM);
-        this.DOM.innerHTML = `
-        <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       Ingredients </button>
-     
-        <div class="dropdown-menu" id="menuIngredients">
-        </div> 
+constructor(props) {
+const Target = document.getElementById("tag");
+this.DOM = document.createElement("div");
+Target.appendChild(this.DOM);
+this.DOM.innerHTML = `
+<div class="btn-group">
+<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Ingredients </button>
+ 
+<div class="dropdown-menu" id="menuIngredients">
+</div> 
 `
-     const Target2 = document.getElementById("menuIngredients");
-     
+const Target2 = document.getElementById("menuIngredients");
+ 
 
-    }
+}
 
 
 
@@ -72,27 +81,27 @@ export default class Ustensils extends Component{
 
 /* ${  for (let recipe of this.props){
 
-            this.ingredients.forEach(ingredient => {
-                new ingredient(ingredient.ingredient)
-            })
-    
-                }
-        }
+this.ingredients.forEach(ingredient => {
+    new ingredient(ingredient.ingredient)
+})
+ 
+    }
+}
 
-        }
+}
 
- <div class="dropdown-menu" id="menuIngredients">
-        ${new ingredient(this.appliance)} 
-        </div>
-        <div class="dropdown-menu" id="menuIngredients">
-        ${this.ustensils.forEach(ustensil => {
-            new ingredient(ustensil)
-        })
+<div class="dropdown-menu" id="menuIngredients">
+${new ingredient(this.appliance)} 
+</div>
+<div class="dropdown-menu" id="menuIngredients">
+${this.ustensils.forEach(ustensil => {
+new ingredient(ustensil)
+})
 
-            }
-        </div>
+}
+</div>
 
-        */
+*/
 
 
 

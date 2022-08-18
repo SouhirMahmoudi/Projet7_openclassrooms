@@ -78,7 +78,7 @@ const recipes = [
                 "quantity" : 1          
             },
             {
-                "ingredient": "Lait de coco",
+                "ingredient": "Lait de Coco",
                 "quantity" : 400,
                 "unit" : "ml"
             },
@@ -454,7 +454,7 @@ const recipes = [
                 "unit":"cuillère à soupe"
             },
             {
-                "ingredient": "huile d'olive",
+                "ingredient": "Huile d'olive",
                 "quantity": 2,
                 "unit": "cuillère à soupe"
             }
@@ -695,7 +695,7 @@ const recipes = [
                 "unit":"grammes"
             },
             {
-                "ingredient": "huile d'olive",
+                "ingredient": "Huile d'olive",
                 "quantity": 1,
                 "unit": "cuillères à soupe"
             }
@@ -1610,7 +1610,7 @@ const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Crème Fraîche",
+                "ingredient": "Crème fraîche",
                 "quantity": 20,
                 "unit":"cl"
             }

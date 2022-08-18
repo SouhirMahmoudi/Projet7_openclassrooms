@@ -8,7 +8,9 @@
 }
 
 .card {
+  height: 364px;
   width: 380px;
+  border-radius: 5px;
 }
 
 div#listCard {
@@ -18,6 +20,8 @@ div#listCard {
 }
 .card-title h2 {
   font-size: 18px;
+  width: 210px;
+  text-overflow: ellipsis;
 }
 
 .card-title {
@@ -87,6 +91,25 @@ button#btnSearch {
   left: 0px;
   top: 0px;
   border-radius: 5px;
+  overflow: auto;
+  color: white;
+}
+div#menuIngredients
+{
+  background: #3282f7;
+ 
+}
+#btnOpen1,
+div#menuUstensiles{
+  background: #ED6454;
+
+}
+
+
+#btnOpen2,
+div#menuAppareils{
+  background: #68D9A4;
+
 }
 .dropdown-item {
   display: block;
@@ -100,5 +123,34 @@ button#btnSearch {
 }
 div#tag {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
+}
+.btn-group {
+  margin-right: 20px;
+}
+img.card-img-top {
+  height: 178px;
+  width: 380px;
+  object-fit: cover;
+}
+.card-body {
+  padding: 18px;
+}
+.show input#btnOpen{
+  width:379px;
+}
+input#searchIngredients,
+input#searchUstensils,
+input#searchAppareils
+{
+  width: 630px;
+  border: none;
+  background: transparent;
+  color:white;
+
+}
+
+
+.dropdown-rotate::after {
+  transform: rotate(180deg);
 }

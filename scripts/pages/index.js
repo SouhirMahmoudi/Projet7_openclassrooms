@@ -9,7 +9,7 @@ import Ustensils from "../components/Ustensiles.js";
 
 //tags ingredients au click afficher tous les ingredients et changer le placeholder
 
-let result = [];
+/*let result = [];
 recipes.forEach(recipe => {
     recipe.ingredients.forEach(elm => {
         result.push(elm.ingredient)
@@ -31,9 +31,12 @@ function DisplayIngredients(liste) {
         btnOpen.value="";
         btnOpen.value="Rechercher un ingredient";
        
-}
+}*/
 
 //tags ustensiles, au click afficher tous les ustensiles et changer le placeholder
+/*const Target2 = document.getElementById("tag");
+
+
 let result1 =[];
          recipes.forEach(recipe => {
              recipe.ustensils.forEach(elm => {
@@ -49,14 +52,18 @@ function DisplayUstensiles(liste) {
     liste.forEach(elm=>
         target4.insertAdjacentHTML('afterbegin', `<a class="dropdown-item">${elm}</a>`))
 
-}
+}*/
+const Target2 = document.getElementById("tag");
 let appareilFilter = new Appareils(Target2, recipes);
+let ingredientFilter = new Ingredients(Target2, recipes);
+let ustensilFilter =  new Ustensils (Target2, recipes);
+
 //tags appareils,au click afficher tous les appareils et changer le placeholder
 
 /*let result2 =[];
 recipes.forEach(recipe => {
             result2.push(recipe.appliance)
-         })
+         }) 
          
 let appareilsList = new Set(result2);     
 new Appareils(Target2);
@@ -85,9 +92,6 @@ const searchBar = document.getElementById("searchBar");
 searchBar.addEventListener("keyup", function (e) {
     let value = searchBar.value.toLowerCase();
     let result = [];
-
-   // result2 = Array.from(ingredientsList).filter(ingredient => ingredient.toLowerCase().includes(value));
-   // DisplayIngredients(result2);
     for (let recipe of recipes) {
     
         if ((recipe.name.toLowerCase().includes(value)) || (recipe.description.toLowerCase().includes(value))
@@ -100,20 +104,13 @@ searchBar.addEventListener("keyup", function (e) {
     }
     appareilFilter.props = result;
     appareilFilter.GetApplianceList();
+    ingredientFilter.props = result;
+    ingredientFilter.GetIngredientslist();
+    ustensilFilter.props = result;
+    ustensilFilter.GetUstensilsList();
     
 
     DisplayRecipes(result)
-   /* for (let recipe of result){
-        result3.push(recipe.appliance)
-    }
-    let newAppareils = new Set(result3);
-    console.log(result3, newAppareils)
-    DisplayAppareils(newAppareils);
-    for (let recipe of result){
-        result4.push(recipe.ustensils)
-    }
-    let newUstensiles = new Set(result4);
-    DisplayUstensiles(newUstensiles);*/
     
 })
 

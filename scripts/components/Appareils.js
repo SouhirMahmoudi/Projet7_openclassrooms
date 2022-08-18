@@ -1,56 +1,58 @@
 
 import Component from "../factories/Component.js";
 
-export default class Appareils extends Component{
-    
+export default class Appareils extends Component {
+
     constructor(DOMtarget, props) {
         super(DOMtarget, "appareilsTag", "div", props);
         this.DOM.className = "appareilsTag";
-        this.props=props;
-        this.appareils=[];
+        this.props = props;
+        this.appareils = [];
         this.GetApplianceList();
 
 
     }
 
-    render(){
+    render() {
         this.DOM.innerHTML = `
         <div class="btn-group">
-        <input  type="text" id="btnOpen2" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-        " 
-        placeholder= "Appareils" />
+        <button  type="text" id="btnOpen2" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        " > Appareils </button>
         <div class="dropdown-menu" id="menuAppareils">
         </div> 
 `
-document.querySelector("#btnOpen2").addEventListener("click",(e) =>{
-    this.AfficherAppareils()
-})
+        const btn2 = document.querySelector("#btnOpen2");
+        btn2.addEventListener("click", (e) => {
+            this.AfficherAppareils()
+            btn2.innerHTML="<input type='text' placeholder ='Rechercher un appareil' id='searchAppareils' />"
+            btn2.classList.toggle("dropdown-rotate");
+        })
 
     }
 
-    AfficherAppareils(){
-       const target=document.getElementById("menuAppareils");
-       target.innerHTML="";
-      this.appareils.forEach(elm=>{
-        target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
+    AfficherAppareils() {
+        const target = document.getElementById("menuAppareils");
+        target.innerHTML = "";
+        this.appareils.forEach(elm => {
+            target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
 
-      })
+        })
 
     }
- 
 
-GetApplianceList(){
-    this.appareils=[];
-    this.props.forEach(recipe=>{
-      this.appareils.push(recipe.appliance)
-    }) 
-    this.appareils=[...new Set(this.appareils)]
+
+    GetApplianceList() {
+        this.appareils = [];
+        this.props.forEach(recipe => {
+            this.appareils.push(recipe.appliance)
+        })
+        this.appareils = [...new Set(this.appareils)]
+    }
+
 }
 
-}
 
-    
-   
+
 
 
 
