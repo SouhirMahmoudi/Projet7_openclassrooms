@@ -70,6 +70,7 @@ p.listIngredients {
   display: flex;
   flex-direction: column;
 }
+
 input#searchBar {
   width: 100%;
   background: #e7e7e7;
@@ -82,34 +83,38 @@ button#btnSearch {
   margin-left: -28px;
   background: transparent;
 }
-.dropdown-menu.show {
+.show,
+.show1,
+.show2 {
   display: flex !important;
   flex-direction: row;
   flex-wrap: wrap;
   height: 397px;
-  width: 667px;
+  width: 630px;
   left: 0px;
   top: 0px;
   border-radius: 5px;
   overflow: auto;
   color: white;
 }
-div#menuIngredients
-{
-  background: #3282f7;
- 
+.show,
+.container,
+#btnOpen {
+  background: #3282f7 !important;
 }
+.btn {
+  border: none !important;
+}
+.show1,
 #btnOpen1,
-div#menuUstensiles{
-  background: #ED6454;
-
+.container1 {
+  background: #ed6454 !important;
 }
 
-
-#btnOpen2,
-div#menuAppareils{
-  background: #68D9A4;
-
+.show2,
+.container2,
+#btnOpen2 {
+  background: #68d9a4 !important;
 }
 .dropdown-item {
   display: block;
@@ -136,21 +141,62 @@ img.card-img-top {
 .card-body {
   padding: 18px;
 }
-.show input#btnOpen{
-  width:379px;
+.show input#btnOpen,
+.show1 input#btnOpen1,
+.show2 input#btnOpen2 {
+  width: 379px;
 }
 input#searchIngredients,
 input#searchUstensils,
-input#searchAppareils
-{
-  width: 630px;
+input#searchAppareils {
+  width: 580px;
   border: none;
   background: transparent;
-  color:white;
-
+  color: white;
+}
+div#menuUstensiles {
+  width: 100%;
+}
+div#menuAppareils {
+  width: 100%;
+}
+div#menuIngredients {
+  width: 100%;
+}
+.invisible {
+  display: none;
+  background: transparent;
+}
+.dropdown-menu {
+  display: none;
+}
+.container,
+.container1,
+.container2 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+span.toggle1 {
+  padding-left: 2px;
+  padding-right: 11px;
 }
 
+span.toggle2 {
+  padding-left: 2px;
+  padding-right: 11px;
+}
 
-.dropdown-rotate::after {
-  transform: rotate(180deg);
+.fas{
+  color:white !important;
+}
+div#components_tag {
+  height: 16.552631378173828px;
+  width: 32px;
+  left: 20px;
+  top: 10px;
+  border-radius: 5px;
+  margin-bottom:10px;
+  
+
 }

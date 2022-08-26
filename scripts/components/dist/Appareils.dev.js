@@ -60,22 +60,42 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      this.DOM.innerHTML = "\n        <div class=\"btn-group\">\n        <button  type=\"text\" id=\"btnOpen2\" class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"\n        \" > Appareils </button>\n        <div class=\"dropdown-menu\" id=\"menuAppareils\">\n        </div> \n";
-      var btn2 = document.querySelector("#btnOpen2");
-      btn2.addEventListener("click", function (e) {
-        _this2.AfficherAppareils();
+      this.DOM.innerHTML = "\n        <div class=\"btn-group\" id=\"btnGroup2\">\n        <div class=\"container2\">\n        <button  type=\"text\" id=\"btnOpen2\" class=\"btn btn-success\"> Appareils </button>\n        <span class=\"toggle2\">  <i id=\"fas\" class=\"fas fa-chevron-down\"></i> </span>\n        </div>\n        <div class=\"dropdown-menu\" id=\"menuAppareils\">\n        </div> \n";
+      this.input = document.createElement("input");
+      this.input.setAttribute("type", "text");
+      this.input.setAttribute("placeholder", "Rechercher un appareil");
+      this.input.setAttribute("id", "searchAppareils");
+      this.btn = document.createElement("button");
+      this.btn.setAttribute("id", "btnOpen2");
+      this.btn.className = "btn btn-success";
+      this.btn.setAttribute("name", "appareils");
+      this.btn.innerHTML = "Ustensils";
+      var btn = document.querySelector("#btnGroup2 .toggle2");
+      btn.addEventListener("click", function (e) {
+        if (document.querySelector("#btnGroup2 .btn") != null) {
+          document.querySelector("#btnGroup2 .btn").replaceWith(_this2.input);
+          var target = document.getElementById("menuAppareils");
+          target.innerHTML = "";
 
-        btn2.innerHTML = "<input type='text' placeholder ='Rechercher un appareil' id='searchAppareils' />";
-        btn2.classList.toggle("dropdown-rotate");
-      });
-    }
-  }, {
-    key: "AfficherAppareils",
-    value: function AfficherAppareils() {
-      var target = document.getElementById("menuAppareils");
-      target.innerHTML = "";
-      this.appareils.forEach(function (elm) {
-        target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
+          _this2.appareils.forEach(function (elm) {
+            target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
+          });
+
+          var element2 = document.querySelector(".toggle2 .fa-chevron-down");
+          element2.classList.toggle("fa-chevron-up");
+          target.classList.remove("invisible");
+          target.classList.toggle("show2");
+        } else {
+          document.querySelector("#btnGroup2 input").replaceWith(_this2.btn);
+
+          var _target = document.getElementById("menuAppareils");
+
+          _target.innerHTML = "";
+          var element2 = document.querySelector(".toggle2 .fa-chevron-down");
+          element2.classList.remove("fa-chevron-up");
+
+          _target.classList.remove("show2");
+        }
       });
     }
   }, {
@@ -93,7 +113,17 @@ function (_Component) {
 
   return Appareils;
 }(_Component2["default"]);
-/* ${  for (let recipe of this.props){
+/*  AfficherAppareils() {
+        const target = document.getElementById("menuAppareils");
+        target.innerHTML = "";
+        this.appareils.forEach(elm => {
+            target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
+
+        })
+
+    }
+
+${  for (let recipe of this.props){
 
             this.ingredients.forEach(ingredient => {
                 new ingredient(ingredient.ingredient)

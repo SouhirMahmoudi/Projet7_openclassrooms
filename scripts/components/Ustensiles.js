@@ -15,33 +15,61 @@ export default class Ustensils extends Component {
 
     render() {
         this.DOM.innerHTML = `
-        <div class="btn-group">
-        <button type="text" id="btnOpen1" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ustensiles</button>
+        <div class="btn-group" id="btnGroup1">
+        <div class="container1">
+        <button type="text" id="btnOpen1" class="btn btn-danger ">Ustensiles</button>
+        <span class="toggle1">  <i id="fas" class="fas fa-chevron-down"></i> </span>
+        </div>
         <div class="dropdown-menu" id="menuUstensiles">
         <p> </p>
         </div> 
 `
-        const btn1 = document.querySelector("#btnOpen1");
-        btn1.addEventListener("click", (e) => {
-            this.AfficherUstensils()
-            btn1.innerHTML="<input type='text' placeholder ='Rechercher un ustensil' id='searchUstensils' />"
-            btn1.classList.toggle("dropdown-rotate");
+
+        this.input = document.createElement("input");
+        this.input.setAttribute("type", "text")
+        this.input.setAttribute("placeholder", "Rechercher un ustensil")
+        this.input.setAttribute("id", "searchUstensils")
+        this.btn = document.createElement("button");
+        this.btn.setAttribute("id", "btnOpen1");
+        this.btn.className = "btn btn-danger";
+        this.btn.setAttribute("name", "ustensils");
+        this.btn.innerHTML = "Ustensils";
+        const btn = document.querySelector("#btnGroup1 .toggle1");
+        btn.addEventListener("click", (e) => {
+            if (document.querySelector("#btnGroup1 .btn") != null) {
+                document.querySelector("#btnGroup1 .btn").replaceWith(this.input);
+                const target = document.getElementById("menuUstensiles");
+                target.innerHTML = "";
+                this.ustensils.forEach(elm => {
+                    target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
+
+                })
+                var element2 = document.querySelector(".toggle1 .fa-chevron-down");
+                element2.classList.toggle("fa-chevron-up");
+                target.classList.remove("invisible");
+                target.classList.toggle("show1");
+                
+
+            }
+            else {
+                document.querySelector("#btnGroup1 input").replaceWith(this.btn);
+                const target = document.getElementById("menuUstensiles");
+                target.innerHTML="";
+                var element2 = document.querySelector(".toggle1 .fa-chevron-down");
+                element2.classList.remove("fa-chevron-up");
+                target.classList.remove("show1");
+
+            }
+
+
         })
 
     }
 
 
-    AfficherUstensils() {
-        const target = document.getElementById("menuUstensiles");
-        target.innerHTML = "";
 
 
-        this.ustensils.forEach(elm => {
-            target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
-
-        })
-
-    }
+   
 
     GetUstensilsList() {
         this.ustensils = [];
@@ -53,9 +81,9 @@ export default class Ustensils extends Component {
         this.ustensils = [...new Set(this.ustensils)]
     }
 
-
 }
-    /*
+
+/*
 
 constructor(props) {
 const Target = document.getElementById("tag");
@@ -82,10 +110,10 @@ const Target2 = document.getElementById("menuIngredients");
 /* ${  for (let recipe of this.props){
 
 this.ingredients.forEach(ingredient => {
-    new ingredient(ingredient.ingredient)
+new ingredient(ingredient.ingredient)
 })
  
-    }
+}
 }
 
 }

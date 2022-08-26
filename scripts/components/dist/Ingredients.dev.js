@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _Component2 = _interopRequireDefault(require("../factories/Component.js"));
 
+var _Tag = _interopRequireDefault(require("./Tag.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -50,10 +52,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Ingredients).call(this, DOMtarget, "ingredientsTag", "div"));
     _this.DOM.className = "ingredientsTag";
-    _this.props = props;
-    _this.ingredients = [];
-
-    _this.GetIngredientslist();
+    _this.props = props; //this.ingredients = [];
+    //this.GetIngredientslist();
 
     return _this;
   }
@@ -63,35 +63,63 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      this.DOM.innerHTML = "\n        <div class=\"btn-group\">\n        <button type=\"text\" id=\"btnOpen\" name=\"ingredients\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n        Ingredients </button>\n        <div id=\"recherche\"></div>\n        <div class=\"dropdown-menu\" id=\"menuIngredients\">\n        <p> </p>\n        </div> \n        \n        </div>\n";
-      var btn = document.querySelector("#btnOpen");
+      this.DOM.innerHTML = "\n        <div class=\"btn-group\" id=\"btnGroup\">\n        <div class=\"container\">\n        <button type=\"text\" id=\"btnOpen\" name=\"ingredients\" class=\"btn btn-primary\" >\n        Ingredients </button>\n        <span class=\"toggle\">  <i id=\"fas\" class=\"fas fa-chevron-down\"></i> </span>\n        </div>\n        <div class=\"dropdown-menu\" id=\"menuIngredients\">\n        <p> </p>\n        </div> \n        \n        </div>\n";
+      this.input = document.createElement("input");
+      this.input.setAttribute("type", "text");
+      this.input.setAttribute("placeholder", "Rechercher un ingrédient");
+      this.input.setAttribute("id", "searchIngredients");
+      this.btn = document.createElement("button");
+      this.btn.setAttribute("id", "btnOpen");
+      this.btn.className = "btn btn-primary";
+      this.btn.setAttribute("name", "ingredients");
+      this.btn.innerHTML = "Ingredients";
+      var btn = document.querySelector("#btnGroup .toggle");
       btn.addEventListener("click", function (e) {
-        _this2.AfficherIngredients();
+        if (document.querySelector("#btnGroup .btn") != null) {
+          document.querySelector("#btnGroup .btn").replaceWith(_this2.input);
+          var target = document.getElementById("menuIngredients");
+          target.innerHTML = "";
 
-        btn.innerHTML = "<input type='text' placeholder ='Rechercher un ingrédient' id='searchIngredients' />";
-        btn.classList.toggle("dropdown-rotate");
-      });
-    }
-    /* AfficherInput(){
-         const target1 = document.getElementById("recherche");
-         this.DOM.innerHTML = `
-         <div class="btn-group">
-         <input type="text" id="btnOpen" name="ingredients" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
-         <div id="recherche"></div>
-         <div class="dropdown-menu" id="menuIngredients">
-         <p> </p>
-         </div> 
-         
-         </div> `
-     }*/
+          _this2.ingredients.forEach(function (elm) {
+            target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
+          });
 
-  }, {
-    key: "AfficherIngredients",
-    value: function AfficherIngredients() {
-      var target = document.getElementById("menuIngredients");
-      target.innerHTML = "";
-      this.ingredients.forEach(function (elm) {
-        target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
+          var element2 = document.querySelector(".toggle .fa-chevron-down");
+          element2.classList.toggle("fa-chevron-up");
+          target.classList.remove("invisible");
+          target.classList.toggle("show");
+          var inputTag = document.getElementById("searchIngredients");
+          inputTag.addEventListener("keyup", function (e) {
+            var target = document.getElementById("menuIngredients");
+            target.innerHTML = "";
+
+            _this2.ingredients.forEach(function (elm) {
+              target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
+            });
+
+            setTimeout(_this2.AfficherTag(inputTag.value, 1000));
+          });
+          /* const TargetTag= document.getElementById("iconTag");
+           const items = document.querySelectorAll("#menuIngredients .dropdown-item");
+            for (let i = 0; i< items.length; i++){
+               items[i].addEventListener("click",  function(e){
+                     new Tag(target, "ingredients", items[i].value);
+                     alert(items[i].value)
+                     console.log(items)
+                
+                 })*/
+        } else {
+          document.querySelector("#btnGroup input").replaceWith(_this2.btn);
+
+          var _target = document.getElementById("menuIngredients");
+
+          _target.classList.toggle("invisible");
+
+          var element2 = document.querySelector(".toggle .fa-chevron-down");
+          element2.classList.remove("fa-chevron-up");
+
+          _target.classList.remove("show");
+        }
       });
     }
   }, {
@@ -106,27 +134,84 @@ function (_Component) {
         });
       });
       this.ingredients = _toConsumableArray(new Set(this.ingredients));
-      console.log(this.ingredients);
+    }
+  }, {
+    key: "GetIngredientslistByTag",
+    value: function GetIngredientslistByTag(tag) {
+      var _this4 = this;
+
+      this.ingredients = [];
+      this.props.forEach(function (recipe) {
+        recipe.ingredients.forEach(function (elm) {
+          if (elm.ingredient.toLowerCase().includes(tag.toLowerCase())) {
+            _this4.ingredients.push(elm.ingredient.toLowerCase());
+          }
+        });
+      });
+      this.ingredients = _toConsumableArray(new Set(this.ingredients));
+    }
+  }, {
+    key: "AfficherTag",
+    value: function AfficherTag(valeur) {
+      var TargetTag = document.getElementById("iconTag");
+      TargetTag.innerHTML = "";
+      new _Tag["default"](TargetTag, "ingredients", valeur);
     }
   }]);
 
   return Ingredients;
 }(_Component2["default"]);
+/* AfficherInput(){
+     const target1 = document.getElementById("recherche");
+     this.DOM.innerHTML = `
+     <div class="btn-group">
+     <input type="text" id="btnOpen" name="ingredients" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+     <div id="recherche"></div>
+     <div class="dropdown-menu" id="menuIngredients">
+     <p> </p>
+     </div> 
+     
+     </div> `
+ }*/
+
+/*AfficherIngredients() {
+    const target = document.getElementById("menuIngredients");
+    target.innerHTML = "";
+    this.ingredients.forEach(elm => {
+        target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
+
+    })
+
+}
+
+GetIngredientslist() {
+    this.ingredients = [];
+    this.props.forEach(recipe => {
+        recipe.ingredients.forEach(elm => {
+            this.ingredients.push(elm.ingredient)
+        })
+    })
+    this.ingredients = [...new Set(this.ingredients)]
+
+}
+}
+
+
 /*
 
 constructor(props) {
-    const Target = document.getElementById("tag");
-    this.DOM = document.createElement("div");
-    Target.appendChild(this.DOM);
-    this.DOM.innerHTML = `
-    <div class="btn-group">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   Ingredients </button>
+const Target = document.getElementById("tag");
+this.DOM = document.createElement("div");
+Target.appendChild(this.DOM);
+this.DOM.innerHTML = `
+<div class="btn-group">
+<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Ingredients </button>
  
-    <div class="dropdown-menu" id="menuIngredients">
-    </div> 
+<div class="dropdown-menu" id="menuIngredients">
+</div> 
 `
- const Target2 = document.getElementById("menuIngredients");
+const Target2 = document.getElementById("menuIngredients");
  
 
 }
@@ -138,27 +223,27 @@ constructor(props) {
 
 /* ${  for (let recipe of this.props){
 
-        this.ingredients.forEach(ingredient => {
-            new ingredient(ingredient.ingredient)
-        })
+    this.ingredients.forEach(ingredient => {
+        new ingredient(ingredient.ingredient)
+    })
  
-            }
-    }
+        }
+}
 
-    }
+}
 
 <div class="dropdown-menu" id="menuIngredients">
-    ${new ingredient(this.appliance)} 
-    </div>
-    <div class="dropdown-menu" id="menuIngredients">
-    ${this.ustensils.forEach(ustensil => {
-        new ingredient(ustensil)
-    })
+${new ingredient(this.appliance)} 
+</div>
+<div class="dropdown-menu" id="menuIngredients">
+${this.ustensils.forEach(ustensil => {
+    new ingredient(ustensil)
+})
 
-        }
-    </div>
+    }
+</div>
 
-    */
+*/
 
 
 exports["default"] = Ingredients;

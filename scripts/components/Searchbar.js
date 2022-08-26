@@ -10,6 +10,7 @@ export default class SearchBar extends Component {
         this.DOM.innerHTML = `
 <input type="text" placeholder="" id="searchBar" />
 <button id="btnSearch"><i class="fa fa-search" aria-hidden="true"></i></span> </button>
+<div id="tagName"></div>
 `
     }
     

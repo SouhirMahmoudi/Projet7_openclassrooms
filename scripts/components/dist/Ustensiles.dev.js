@@ -60,22 +60,42 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      this.DOM.innerHTML = "\n        <div class=\"btn-group\">\n        <button type=\"text\" id=\"btnOpen1\" class=\"btn btn-danger dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Ustensiles</button>\n        <div class=\"dropdown-menu\" id=\"menuUstensiles\">\n        <p> </p>\n        </div> \n";
-      var btn1 = document.querySelector("#btnOpen1");
-      btn1.addEventListener("click", function (e) {
-        _this2.AfficherUstensils();
+      this.DOM.innerHTML = "\n        <div class=\"btn-group\" id=\"btnGroup1\">\n        <div class=\"container1\">\n        <button type=\"text\" id=\"btnOpen1\" class=\"btn btn-danger \">Ustensiles</button>\n        <span class=\"toggle1\">  <i id=\"fas\" class=\"fas fa-chevron-down\"></i> </span>\n        </div>\n        <div class=\"dropdown-menu\" id=\"menuUstensiles\">\n        <p> </p>\n        </div> \n";
+      this.input = document.createElement("input");
+      this.input.setAttribute("type", "text");
+      this.input.setAttribute("placeholder", "Rechercher un ustensil");
+      this.input.setAttribute("id", "searchUstensils");
+      this.btn = document.createElement("button");
+      this.btn.setAttribute("id", "btnOpen1");
+      this.btn.className = "btn btn-danger";
+      this.btn.setAttribute("name", "ustensils");
+      this.btn.innerHTML = "Ustensils";
+      var btn = document.querySelector("#btnGroup1 .toggle1");
+      btn.addEventListener("click", function (e) {
+        if (document.querySelector("#btnGroup1 .btn") != null) {
+          document.querySelector("#btnGroup1 .btn").replaceWith(_this2.input);
+          var target = document.getElementById("menuUstensiles");
+          target.innerHTML = "";
 
-        btn1.innerHTML = "<input type='text' placeholder ='Rechercher un ustensil' id='searchUstensils' />";
-        btn1.classList.toggle("dropdown-rotate");
-      });
-    }
-  }, {
-    key: "AfficherUstensils",
-    value: function AfficherUstensils() {
-      var target = document.getElementById("menuUstensiles");
-      target.innerHTML = "";
-      this.ustensils.forEach(function (elm) {
-        target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
+          _this2.ustensils.forEach(function (elm) {
+            target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
+          });
+
+          var element2 = document.querySelector(".toggle1 .fa-chevron-down");
+          element2.classList.toggle("fa-chevron-up");
+          target.classList.remove("invisible");
+          target.classList.toggle("show1");
+        } else {
+          document.querySelector("#btnGroup1 input").replaceWith(_this2.btn);
+
+          var _target = document.getElementById("menuUstensiles");
+
+          _target.innerHTML = "";
+          var element2 = document.querySelector(".toggle1 .fa-chevron-down");
+          element2.classList.remove("fa-chevron-up");
+
+          _target.classList.remove("show1");
+        }
       });
     }
   }, {
@@ -96,6 +116,7 @@ function (_Component) {
   return Ustensils;
 }(_Component2["default"]);
 /*
+
 constructor(props) {
 const Target = document.getElementById("tag");
 this.DOM = document.createElement("div");
@@ -104,21 +125,31 @@ this.DOM.innerHTML = `
 <div class="btn-group">
 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 Ingredients </button>
+ 
 <div class="dropdown-menu" id="menuIngredients">
 </div> 
 `
 const Target2 = document.getElementById("menuIngredients");
+ 
 
 }
+
+
+
+
 
 
 /* ${  for (let recipe of this.props){
+
 this.ingredients.forEach(ingredient => {
 new ingredient(ingredient.ingredient)
 })
-   }
+ 
 }
 }
+
+}
+
 <div class="dropdown-menu" id="menuIngredients">
 ${new ingredient(this.appliance)} 
 </div>
@@ -126,8 +157,10 @@ ${new ingredient(this.appliance)}
 ${this.ustensils.forEach(ustensil => {
 new ingredient(ustensil)
 })
+
 }
 </div>
+
 */
 
 
