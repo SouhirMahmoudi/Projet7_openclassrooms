@@ -48,13 +48,13 @@ export default class Ustensils extends Component {
                 element2.classList.toggle("fa-chevron-up");
                 target.classList.remove("invisible");
                 target.classList.toggle("show1");
-                
+
 
             }
             else {
                 document.querySelector("#btnGroup1 input").replaceWith(this.btn);
                 const target = document.getElementById("menuUstensiles");
-                target.innerHTML="";
+                target.innerHTML = "";
                 var element2 = document.querySelector(".toggle1 .fa-chevron-down");
                 element2.classList.remove("fa-chevron-up");
                 target.classList.remove("show1");
@@ -69,7 +69,7 @@ export default class Ustensils extends Component {
 
 
 
-   
+
 
     GetUstensilsList() {
         this.ustensils = [];
@@ -79,6 +79,16 @@ export default class Ustensils extends Component {
             })
         })
         this.ustensils = [...new Set(this.ustensils)]
+    }
+
+    GetAppliancelistByInputTag(liste) {
+        this.ustensils = liste;
+        const target = document.getElementById("menuUstensiles");
+        target.innerHTML = "";
+        this.ustensils.forEach(elm => {
+            target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
+
+        })
     }
 
 }

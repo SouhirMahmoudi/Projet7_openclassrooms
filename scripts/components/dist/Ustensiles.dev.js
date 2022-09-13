@@ -111,6 +111,16 @@ function (_Component) {
       });
       this.ustensils = _toConsumableArray(new Set(this.ustensils));
     }
+  }, {
+    key: "GetAppliancelistByInputTag",
+    value: function GetAppliancelistByInputTag(liste) {
+      this.ustensils = liste;
+      var target = document.getElementById("menuUstensiles");
+      target.innerHTML = "";
+      this.ustensils.forEach(function (elm) {
+        target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
+      });
+    }
   }]);
 
   return Ustensils;

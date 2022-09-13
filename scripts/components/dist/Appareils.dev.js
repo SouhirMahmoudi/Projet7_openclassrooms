@@ -109,6 +109,16 @@ function (_Component) {
       });
       this.appareils = _toConsumableArray(new Set(this.appareils));
     }
+  }, {
+    key: "GetAppliancelistByInputTag",
+    value: function GetAppliancelistByInputTag(liste) {
+      this.appareils = liste;
+      var target = document.getElementById("menuAppareils");
+      target.innerHTML = "";
+      this.appareils.forEach(function (elm) {
+        target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
+      });
+    }
   }]);
 
   return Appareils;

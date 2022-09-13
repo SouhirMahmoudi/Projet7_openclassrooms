@@ -73,6 +73,16 @@ export default class Appareils extends Component {
         this.appareils = [...new Set(this.appareils)]
     }
 
+    GetAppliancelistByInputTag(liste) {
+        this.appareils = liste;
+        const target = document.getElementById("menuAppareils");
+        target.innerHTML = "";
+        this.appareils.forEach(elm => {
+            target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
+
+        })
+    }
+
 }
 
 

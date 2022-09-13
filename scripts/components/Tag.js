@@ -1,18 +1,25 @@
-import Component from "../factories/Component.js";
-export default class Tag extends Component {
+export default class Tag 
+ {
     constructor(DOMtarget, type, value) {
-        super(DOMtarget, "tag", "div");
-        this.DOM.className = "Tag";
+      //  super(DOMtarget, "tag", "div");
+        this.DOM= DOMtarget;
         this.type = type;
         this.value = value;
+        this.render();
+        
+       // isClicked = false;
     }
     render() {
-        this.DOM.innerHTML = `
-        <button type="text" id="tagIngredient" name="ingredients" class="${this.type}">
+        this.DOM.innerHTML += `
+        <button type="text" class="tag ${this.type}" data-type="${this.type}" data-text="${this.value}">
         <p> ${this.value} </p>
-        <i class="fa-solid fa-circle-xmark"></i>
-        </button>
+        <i class="far fa-times-circle" id="close" ></i>       
+         </button>
 ` 
+   
+
+   
+
     }
 }
 

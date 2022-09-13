@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _Component2 = _interopRequireDefault(require("../factories/Component.js"));
 
-var _Tag = _interopRequireDefault(require("./Tag.js"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -52,8 +50,9 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Ingredients).call(this, DOMtarget, "ingredientsTag", "div"));
     _this.DOM.className = "ingredientsTag";
-    _this.props = props; //this.ingredients = [];
-    //this.GetIngredientslist();
+    _this.props = props;
+    _this.ingredients = []; //this.GetIngredientslist();
+    // this.GetIngredientslistByInputTag();
 
     return _this;
   }
@@ -82,32 +81,37 @@ function (_Component) {
 
           _this2.ingredients.forEach(function (elm) {
             target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
-          });
+          }); // const TargetTag = document.getElementById("iconTag");
+          //const items = document.querySelectorAll("#menuIngredients .dropdown-item");
+          //   for (let item of items) {
+          //  item.addEventListener("click", function (e) {
+          //   new Tag(TargetTag, "ingredients", e.target.innerHTML, e.target.innerHTML);
+
+          /*let Close = e.target.getElementById('close');
+          Close.addEventListener("click", (e)=>{
+              e.target.innerHTML= '';
+          } )*/
+          // const CloseIcons = document.querySelectorAll(".fa-times-circle")
+          // for (let icon of CloseIcons) {
+          //   icon.addEventListener("click", function (e) {
+          //   e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+          //  });
+          // }
+
 
           var element2 = document.querySelector(".toggle .fa-chevron-down");
           element2.classList.toggle("fa-chevron-up");
           target.classList.remove("invisible");
           target.classList.toggle("show");
-          var inputTag = document.getElementById("searchIngredients");
-          inputTag.addEventListener("keyup", function (e) {
-            var target = document.getElementById("menuIngredients");
-            target.innerHTML = "";
-
-            _this2.ingredients.forEach(function (elm) {
-              target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
-            });
-
-            setTimeout(_this2.AfficherTag(inputTag.value, 1000));
-          });
-          /* const TargetTag= document.getElementById("iconTag");
-           const items = document.querySelectorAll("#menuIngredients .dropdown-item");
-            for (let i = 0; i< items.length; i++){
-               items[i].addEventListener("click",  function(e){
-                     new Tag(target, "ingredients", items[i].value);
-                     alert(items[i].value)
-                     console.log(items)
-                
-                 })*/
+          /*const inputTag = document.getElementById("searchIngredients");
+          inputTag.addEventListener("keyup", (e) => {
+              const target = document.getElementById("menuIngredients");
+              target.innerHTML = "";
+              this.ingredients.forEach(elm => {
+                  target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
+              })
+              // setTimeout(this.AfficherTag(inputTag.value, 1000));
+            })*/
         } else {
           document.querySelector("#btnGroup input").replaceWith(_this2.btn);
 
@@ -136,27 +140,31 @@ function (_Component) {
       this.ingredients = _toConsumableArray(new Set(this.ingredients));
     }
   }, {
-    key: "GetIngredientslistByTag",
-    value: function GetIngredientslistByTag(tag) {
-      var _this4 = this;
+    key: "GetIngredientslistByInputTag",
+    value: function GetIngredientslistByInputTag(liste) {
+      this.ingredients = liste;
+      /*this.props.forEach(recipe => {
+          recipe.ingredients.forEach(elm => {
+              if (elm.ingredient.toLowerCase().includes(inputValue)) {
+                  this.ingredients.push(elm.ingredient.toLowerCase())
+              }
+          })
+      })*/
 
-      this.ingredients = [];
-      this.props.forEach(function (recipe) {
-        recipe.ingredients.forEach(function (elm) {
-          if (elm.ingredient.toLowerCase().includes(tag.toLowerCase())) {
-            _this4.ingredients.push(elm.ingredient.toLowerCase());
-          }
-        });
-      });
       this.ingredients = _toConsumableArray(new Set(this.ingredients));
+      var target = document.getElementById("menuIngredients");
+      target.innerHTML = "";
+      this.ingredients.forEach(function (elm) {
+        target.insertAdjacentHTML('beforeend', "<a class=\"dropdown-item\">".concat(elm, "</a>"));
+      });
     }
-  }, {
-    key: "AfficherTag",
-    value: function AfficherTag(valeur) {
-      var TargetTag = document.getElementById("iconTag");
-      TargetTag.innerHTML = "";
-      new _Tag["default"](TargetTag, "ingredients", valeur);
-    }
+    /* AfficherTag(valeur) {
+         const TargetTag = document.getElementById("iconTag");
+         TargetTag.innerHTML="";
+         new Tag(TargetTag, "ingredients", valeur);
+        
+     }*/
+
   }]);
 
   return Ingredients;

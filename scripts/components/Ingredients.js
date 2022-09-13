@@ -1,6 +1,5 @@
 
 import Component from "../factories/Component.js";
-import Tag from "./Tag.js";
 /**
  * @param {object} [props]
  */
@@ -9,8 +8,9 @@ export default class Ingredients extends Component {
         super(DOMtarget, "ingredientsTag", "div");
         this.DOM.className = "ingredientsTag";
         this.props = props;
-        //this.ingredients = [];
+        this.ingredients = [];
         //this.GetIngredientslist();
+       // this.GetIngredientslistByInputTag();
     }
 
     render() {
@@ -46,34 +46,39 @@ export default class Ingredients extends Component {
                 target.innerHTML = "";
                 this.ingredients.forEach(elm => {
                     target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
-
                 })
+               // const TargetTag = document.getElementById("iconTag");
+                //const items = document.querySelectorAll("#menuIngredients .dropdown-item");
+             //   for (let item of items) {
+                  //  item.addEventListener("click", function (e) {
+                     //   new Tag(TargetTag, "ingredients", e.target.innerHTML, e.target.innerHTML);
+                        /*let Close = e.target.getElementById('close');
+                        Close.addEventListener("click", (e)=>{
+                            e.target.innerHTML= '';
+                        } )*/
+                       // const CloseIcons = document.querySelectorAll(".fa-times-circle")
+                       // for (let icon of CloseIcons) {
+                         //   icon.addEventListener("click", function (e) {
+                               
+                             //   e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+                          //  });
+                       // }
+                    
+                
                 var element2 = document.querySelector(".toggle .fa-chevron-down");
                 element2.classList.toggle("fa-chevron-up");
                 target.classList.remove("invisible");
                 target.classList.toggle("show");
-                const inputTag = document.getElementById("searchIngredients");
+                /*const inputTag = document.getElementById("searchIngredients");
                 inputTag.addEventListener("keyup", (e) => {
                     const target = document.getElementById("menuIngredients");
                     target.innerHTML = "";
                     this.ingredients.forEach(elm => {
                         target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
                     })
-                    setTimeout(this.AfficherTag(inputTag.value, 1000));
+                    // setTimeout(this.AfficherTag(inputTag.value, 1000));
 
-                })
-                /* const TargetTag= document.getElementById("iconTag");
-                 const items = document.querySelectorAll("#menuIngredients .dropdown-item");
-                  for (let i = 0; i< items.length; i++){
-                     items[i].addEventListener("click",  function(e){
-                           new Tag(target, "ingredients", items[i].value);
-                           alert(items[i].value)
-                           console.log(items)
- 
-                   
-                       })*/
-
-
+                })*/
             }
 
             else {
@@ -85,11 +90,10 @@ export default class Ingredients extends Component {
                 target.classList.remove("show");
 
             }
-
-
         })
 
     }
+
     GetIngredientslist() {
         this.ingredients = [];
         this.props.forEach(recipe => {
@@ -101,24 +105,29 @@ export default class Ingredients extends Component {
 
     }
 
-    GetIngredientslistByTag(tag) {
-        this.ingredients = [];
-        this.props.forEach(recipe => {
+  GetIngredientslistByInputTag(liste) {
+        this.ingredients = liste;
+        /*this.props.forEach(recipe => {
             recipe.ingredients.forEach(elm => {
-                if (elm.ingredient.toLowerCase().includes(tag.toLowerCase())) {
+                if (elm.ingredient.toLowerCase().includes(inputValue)) {
                     this.ingredients.push(elm.ingredient.toLowerCase())
                 }
             })
-        })
+        })*/
         this.ingredients = [...new Set(this.ingredients)]
+        const target = document.getElementById("menuIngredients");
+                target.innerHTML = "";
+                this.ingredients.forEach(elm => {
+                    target.insertAdjacentHTML('beforeend', `<a class="dropdown-item">${elm}</a>`)
+                })
 
     }
-    AfficherTag(valeur) {
-        const TargetTag = document.getElementById("iconTag");
-        TargetTag.innerHTML="";
-        new Tag(TargetTag, "ingredients", valeur);
-       
-    }
+    /* AfficherTag(valeur) {
+         const TargetTag = document.getElementById("iconTag");
+         TargetTag.innerHTML="";
+         new Tag(TargetTag, "ingredients", valeur);
+        
+     }*/
 
 
 }

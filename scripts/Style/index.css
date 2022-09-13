@@ -187,16 +187,39 @@ span.toggle2 {
   padding-right: 11px;
 }
 
-.fas{
-  color:white !important;
+.fas {
+  color: white !important;
 }
 div#components_tag {
   height: 16.552631378173828px;
   width: 32px;
   left: 20px;
   top: 10px;
+  margin-bottom: 29px;
+  margin-top: 10px;
+  background: #3282f7;
+}
+.tag{
   border-radius: 5px;
-  margin-bottom:10px;
-  
-
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 37px;
+}
+.tag.ingredients{
+  background: #3282f7;
+}
+.tag.ustensils{
+  background:#ed6454;
+}
+.tag.appareils{
+  background:#68d9a4;
+}
+i.far.fa-times-circle {
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  top: 2px;
+  border-radius: 0px;
 }
