@@ -93,7 +93,7 @@ export default class Ingredients extends Component {
         })
 
     }
-
+ 
     GetIngredientslist() {
         this.ingredients = [];
         this.props.forEach(recipe => {
