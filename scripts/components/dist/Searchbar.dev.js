@@ -45,7 +45,7 @@ function (_Component) {
   _createClass(SearchBar, [{
     key: "render",
     value: function render() {
-      this.DOM.innerHTML = "\n<input type=\"text\" placeholder=\"\" id=\"searchBar\" />\n<button id=\"btnSearch\"><i class=\"fa fa-search\" aria-hidden=\"true\"></i></span> </button>\n<div id=\"tagName\"></div>\n";
+      this.DOM.innerHTML = "\n<input type=\"text\" placeholder=\"Rechercher une recette\" id=\"searchBar\" />\n<button id=\"btnSearch\"><i class=\"fa fa-search\" aria-hidden=\"true\"></i></span> </button>\n<div id=\"tagName\"></div>\n";
     }
   }]);
 
