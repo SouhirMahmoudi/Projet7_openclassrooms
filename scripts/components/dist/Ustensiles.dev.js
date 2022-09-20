@@ -85,6 +85,8 @@ function (_Component) {
           element2.classList.toggle("fa-chevron-up");
           target.classList.remove("invisible");
           target.classList.toggle("show1");
+          var element3 = document.querySelector(".container1");
+          element3.classList.remove("vue");
         } else {
           document.querySelector("#btnGroup1 input").replaceWith(_this2.btn);
 
@@ -95,6 +97,9 @@ function (_Component) {
           element2.classList.remove("fa-chevron-up");
 
           _target.classList.remove("show1");
+
+          var element3 = document.querySelector(".container1");
+          element3.classList.toggle("vue");
         }
       });
     }
