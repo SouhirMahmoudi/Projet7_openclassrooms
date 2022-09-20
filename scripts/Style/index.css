@@ -1,7 +1,25 @@
 .index {
   margin: 42px 100px;
 }
+div#iconTag {
+  display: flex;
+  justify-content: space-between;
 
+}
+div#tagAppareil {
+  margin-left: -4%;
+}
+div#tagUstensil {
+  margin-right: 61%;
+}
+div#tagIngredient,
+div#tagAppareil,
+div#tagUstensil
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .index header {
   display: flex;
   justify-content: center;
@@ -30,6 +48,7 @@ div#components_searchbar {
   height: 364px;
   width: 380px;
   border-radius: 5px;
+  margin-bottom:50px;
 }
 .card aside {
   font-family: Lato;

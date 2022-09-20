@@ -59,7 +59,7 @@ btnSearch.addEventListener("click", Filter(searchBar.value));
 //search by tag ----- ingredients
 
 btn.addEventListener("click", function (e) {
-  var TargetTag = document.getElementById("iconTag");
+  var TargetTag = document.getElementById("tagIngredient");
   var items = document.querySelectorAll("#menuIngredients .dropdown-item");
   items.forEach(function (item) {
     return item.addEventListener("click", function (e) {
@@ -96,11 +96,11 @@ btn.addEventListener("click", function (e) {
 
 btn1.addEventListener("click", function (e) {
   var TagUstensils = document.getElementById("searchUstensils");
-  var TargetTag = document.getElementById("iconTag");
+  var TargetTag2 = document.getElementById("tagUstensil");
   var items = document.querySelectorAll("#menuUstensiles .dropdown-item");
   items.forEach(function (item) {
     return item.addEventListener("click", function (e) {
-      new _Tag["default"](TargetTag, "ustensils", e.target.innerHTML);
+      new _Tag["default"](TargetTag2, "ustensils", e.target.innerHTML);
       var tag = {
         text: e.target.textContent,
         type: "ustensils"
@@ -116,7 +116,7 @@ btn1.addEventListener("click", function (e) {
     var NewItems = document.querySelectorAll("#menuUstensiles .dropdown-item");
     NewItems.forEach(function (item) {
       return item.addEventListener("click", function (e) {
-        new _Tag["default"](TargetTag, "ustensils", e.target.innerHTML);
+        new _Tag["default"](TargetTag2, "ustensils", e.target.innerHTML);
         var tag = {
           text: e.target.textContent,
           type: "ustensils"
@@ -132,11 +132,11 @@ btn1.addEventListener("click", function (e) {
 
 btn2.addEventListener("click", function (e) {
   var TagAppliance = document.getElementById("searchAppareils");
-  var TargetTag = document.getElementById("iconTag");
+  var TargetTag1 = document.getElementById("tagAppareil");
   var items = document.querySelectorAll("#menuAppareils .dropdown-item");
   items.forEach(function (item) {
     return item.addEventListener("click", function (e) {
-      new _Tag["default"](TargetTag, "appareils", e.target.innerHTML, e.target.innerHTML);
+      new _Tag["default"](TargetTag1, "appareils", e.target.innerHTML, e.target.innerHTML);
       var tag = {
         text: e.target.textContent,
         type: "appareils"
@@ -152,7 +152,7 @@ btn2.addEventListener("click", function (e) {
     var NewItems = document.querySelectorAll("#menuAppareils .dropdown-item");
     NewItems.forEach(function (item) {
       return item.addEventListener("click", function (e) {
-        new _Tag["default"](TargetTag, "ustensils", e.target.innerHTML, e.target.innerHTML);
+        new _Tag["default"](TargetTag1, "ustensils", e.target.innerHTML, e.target.innerHTML);
         var tag = {
           text: e.target.textContent,
           type: "appareils"

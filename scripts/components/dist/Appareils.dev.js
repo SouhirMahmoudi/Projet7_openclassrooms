@@ -69,7 +69,7 @@ function (_Component) {
       this.btn.setAttribute("id", "btnOpen2");
       this.btn.className = "btn btn-success";
       this.btn.setAttribute("name", "appareils");
-      this.btn.innerHTML = "Ustensils";
+      this.btn.innerHTML = "Appareils";
       var btn = document.querySelector("#btnGroup2 .toggle2");
       btn.addEventListener("click", function (e) {
         if (document.querySelector("#btnGroup2 .btn") != null) {

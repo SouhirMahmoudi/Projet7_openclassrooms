@@ -44,7 +44,7 @@ btnSearch.addEventListener("click", Filter(searchBar.value))
 //search by tag ----- ingredients
 
 btn.addEventListener("click", (e) => {
-    const TargetTag = document.getElementById("iconTag");
+    const TargetTag = document.getElementById("tagIngredient");
     const items = document.querySelectorAll("#menuIngredients .dropdown-item");
     items.forEach(item => item.addEventListener("click", (e) => {
         new Tag(TargetTag, "ingredients", e.target.innerHTML);
@@ -79,11 +79,11 @@ btn.addEventListener("click", (e) => {
 
 btn1.addEventListener("click", (e) => {
     const TagUstensils = document.getElementById("searchUstensils");
-    const TargetTag = document.getElementById("iconTag");
+    const TargetTag2 = document.getElementById("tagUstensil");
     const items = document.querySelectorAll("#menuUstensiles .dropdown-item");
 
     items.forEach(item => item.addEventListener("click", (e) => {
-        new Tag(TargetTag, "ustensils", e.target.innerHTML);
+        new Tag(TargetTag2, "ustensils", e.target.innerHTML);
         const tag = { text: e.target.textContent, type: "ustensils" };
         tagList.push(tag);
         FilterTag();
@@ -97,7 +97,7 @@ btn1.addEventListener("click", (e) => {
         FilterUstensilsByTag(TagUstensils.value);
         const NewItems = document.querySelectorAll("#menuUstensiles .dropdown-item");
         NewItems.forEach(item => item.addEventListener("click", (e) => {
-            new Tag(TargetTag, "ustensils", e.target.innerHTML);
+            new Tag(TargetTag2, "ustensils", e.target.innerHTML);
             const tag = { text: e.target.textContent, type: "ustensils" };
             tagList.push(tag);
             FilterTag();
@@ -113,10 +113,10 @@ btn1.addEventListener("click", (e) => {
 
 btn2.addEventListener("click", (e) => {
     const TagAppliance = document.getElementById("searchAppareils");
-    const TargetTag = document.getElementById("iconTag");
+    const TargetTag1 = document.getElementById("tagAppareil");
     const items = document.querySelectorAll("#menuAppareils .dropdown-item");
     items.forEach(item => item.addEventListener("click", (e) => {
-        new Tag(TargetTag, "appareils", e.target.innerHTML, e.target.innerHTML);
+        new Tag(TargetTag1, "appareils", e.target.innerHTML, e.target.innerHTML);
         const tag = { text: e.target.textContent, type: "appareils" };
         tagList.push(tag);
         FilterTag();
@@ -130,7 +130,7 @@ btn2.addEventListener("click", (e) => {
         FilterApplianceByTag(TagAppliance.value);
         const NewItems = document.querySelectorAll("#menuAppareils .dropdown-item");
         NewItems.forEach(item => item.addEventListener("click", (e) => {
-            new Tag(TargetTag, "ustensils", e.target.innerHTML, e.target.innerHTML);
+            new Tag(TargetTag1, "ustensils", e.target.innerHTML, e.target.innerHTML);
             const tag = { text: e.target.textContent, type: "appareils" };
             tagList.push(tag);
             FilterTag();
