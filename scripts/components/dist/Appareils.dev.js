@@ -60,7 +60,7 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      this.DOM.innerHTML = "\n        <div class=\"btn-group\" id=\"btnGroup2\">\n        <div class=\"container2\">\n        <button  type=\"text\" id=\"btnOpen2\" class=\"btn btn-success\"> Appareils </button>\n        <span class=\"toggle2\">  <i id=\"fas\" class=\"fas fa-chevron-down\"></i> </span>\n        </div>\n        <div class=\"dropdown-menu\" id=\"menuAppareils\">\n        </div> \n";
+      this.DOM.innerHTML = "\n        <div class=\"btn-group\" id=\"btnGroup2\">\n        <div class=\"container2\">\n        <button  id=\"btnOpen2\" class=\"btn btn-success\"> Appareils </button>\n        <span class=\"toggle2\">  <i class=\"fas fa-chevron-down\"></i> </span>\n        </div>\n        <div class=\"dropdown-menu\" id=\"menuAppareils\">\n        </div> \n";
       this.input = document.createElement("input");
       this.input.setAttribute("type", "text");
       this.input.setAttribute("placeholder", "Rechercher un appareil");

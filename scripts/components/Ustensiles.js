@@ -17,8 +17,8 @@ export default class Ustensils extends Component {
         this.DOM.innerHTML = `
         <div class="btn-group" id="btnGroup1">
         <div class="container1">
-        <button type="text" id="btnOpen1" class="btn btn-danger ">Ustensiles</button>
-        <span class="toggle1">  <i id="fas" class="fas fa-chevron-down"></i> </span>
+        <button id="btnOpen1" class="btn btn-danger ">Ustensiles</button>
+        <span class="toggle1">  <i class="fas fa-chevron-down"></i> </span>
         </div>
         <div class="dropdown-menu" id="menuUstensiles">
         <p> </p>
