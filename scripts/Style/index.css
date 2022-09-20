@@ -6,21 +6,62 @@
   display: flex;
   justify-content: center;
 }
+img.logo {
+  height: 93px;
+  width: 268px;
+  left: 588px;
+  top: 42px;
+  border-radius: 0px;
+}
+input#searchBar {
+  padding-left: 15px;
+}
 
+div#components_searchbar {
+  height: 69px;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  border-radius: 5px;
+  margin-bottom: 33px;
+  margin-top:17px;
+}
 .card {
   height: 364px;
   width: 380px;
   border-radius: 5px;
 }
+.card aside {
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+i.far.fa-clock {
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  top: 2px;
+  border-radius: 0px;
+}
 
 div#listCard {
+  margin-top:25px;
   display: FLEX;
   flex-wrap: WRAP;
   justify-content: SPACE-BETWEEN;
 }
 .card-title h2 {
+  font-family: Lato;
   font-size: 18px;
-  width: 210px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  width: 217px;
   text-overflow: ellipsis;
 }
 
@@ -33,6 +74,9 @@ div#listCard {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
+}
+.card-body {
+  background: #e7e7e7;
 }
 
 p.recette {
@@ -97,6 +141,30 @@ button#btnSearch {
   overflow: auto;
   color: white;
 }
+button#btnOpen,
+button#btnOpen1,
+button#btnOpen2 {
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  width:170px;
+}
+
+.container.vue{
+  width:170px;
+}
+.container,
+.container1,
+.container2 {
+  height: 69px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .show,
 .container,
 #btnOpen {
@@ -129,6 +197,24 @@ button#btnSearch {
 div#tag {
   display: flex;
   justify-content: left;
+}
+
+button.tag {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 37px;
+  width: 107px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+button.tag p {
+  margin: 0px;
+}
+i#close {
+  margin-top: 5px;
 }
 .btn-group {
   margin-right: 20px;
@@ -170,12 +256,11 @@ div#menuIngredients {
 .dropdown-menu {
   display: none;
 }
-.container,
-.container1,
-.container2 {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
+
+
+span.toggle2 {
+  padding-left: 2px;
+  padding-right: 11px;
 }
 span.toggle1 {
   padding-left: 2px;
@@ -199,7 +284,7 @@ div#components_tag {
   margin-top: 10px;
   background: #3282f7;
 }
-.tag{
+.tag {
   border-radius: 5px;
   display: flex;
   flex-direction: row;
@@ -207,14 +292,19 @@ div#components_tag {
   align-items: center;
   height: 37px;
 }
-.tag.ingredients{
+.tag.ingredients {
   background: #3282f7;
+
 }
-.tag.ustensils{
-  background:#ed6454;
+.tag.ustensils {
+  background: #ed6454;
+ 
+
 }
-.tag.appareils{
-  background:#68d9a4;
+.tag.appareils {
+  background: #68d9a4;
+ 
+
 }
 i.far.fa-times-circle {
   height: 20px;

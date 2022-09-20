@@ -27,7 +27,7 @@ export default class CardRecipe extends Component {
       <div class="card-body">
      <div class="card-title"> 
      <h2> ${this.name} </h2>
-     <aside> <i class="fas fa-clock"></i> ${this.time}</aside>
+     <aside> <i class="far fa-clock"></i> ${this.time} min</aside>
      </div>
         <div class="card-text">
             <p class="listIngredients"> ${this.showIngredients()} </p>
@@ -42,16 +42,16 @@ export default class CardRecipe extends Component {
         for (let ingredient of this.ingredients){
 
             if (ingredient.quantity == undefined) {
-                result +=`<span class="ingredients">${ingredient.ingredient}</span>`
+                result +=`<span class="ingredients"><strong>${ingredient.ingredient}</strong></span>`
             }
             else if (ingredient.unit == undefined) {
-                result +=`<span class="ingredients">${ingredient.ingredient} : ${ingredient.quantity}</span>`;
+                result +=`<span class="ingredients"><strong>${ingredient.ingredient}</strong> : ${ingredient.quantity}</span>`;
             }
             else if (ingredient.unit == "grammes") {
-                result +=`<span class="ingredients">${ingredient.ingredient} :  ${ingredient.quantity} g</span>`;
+                result +=`<span class="ingredients"><strong>${ingredient.ingredient}</strong> :  ${ingredient.quantity} g</span>`;
             }
             else {
-                result +=`<span class="ingredients">${ingredient.ingredient} :  ${ingredient.quantity} ${ingredient.unit}</span> `;
+                result +=`<span class="ingredients"><strong>${ingredient.ingredient}</strong> :  ${ingredient.quantity} ${ingredient.unit}</span> `;
             }
     
         }

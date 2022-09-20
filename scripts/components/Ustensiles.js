@@ -48,6 +48,9 @@ export default class Ustensils extends Component {
                 element2.classList.toggle("fa-chevron-up");
                 target.classList.remove("invisible");
                 target.classList.toggle("show1");
+                var element3 = document.querySelector(".container1");
+                element3.classList.remove("vue");
+               
 
 
             }
@@ -58,6 +61,11 @@ export default class Ustensils extends Component {
                 var element2 = document.querySelector(".toggle1 .fa-chevron-down");
                 element2.classList.remove("fa-chevron-up");
                 target.classList.remove("show1");
+                var element3 = document.querySelector(".container1");
+                element3.classList.toggle("vue");
+    
+               
+
 
             }
 

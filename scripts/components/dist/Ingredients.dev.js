@@ -103,6 +103,8 @@ function (_Component) {
           element2.classList.toggle("fa-chevron-up");
           target.classList.remove("invisible");
           target.classList.toggle("show");
+          var element3 = document.querySelector(".container");
+          element3.classList.remove("vue");
           /*const inputTag = document.getElementById("searchIngredients");
           inputTag.addEventListener("keyup", (e) => {
               const target = document.getElementById("menuIngredients");
@@ -123,6 +125,9 @@ function (_Component) {
           element2.classList.remove("fa-chevron-up");
 
           _target.classList.remove("show");
+
+          var element3 = document.querySelector(".container");
+          element3.classList.toggle("vue");
         }
       });
     }
