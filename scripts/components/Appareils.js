@@ -17,8 +17,8 @@ export default class Appareils extends Component {
         this.DOM.innerHTML = `
         <div class="btn-group" id="btnGroup2">
         <div class="container2">
-        <button  type="text" id="btnOpen2" class="btn btn-success"> Appareils </button>
-        <span class="toggle2">  <i id="fas" class="fas fa-chevron-down"></i> </span>
+        <button   id="btnOpen2" class="btn btn-success"> Appareils </button>
+        <span class="toggle2">  <i class="fas fa-chevron-down"></i> </span>
         </div>
         <div class="dropdown-menu" id="menuAppareils">
         </div> 

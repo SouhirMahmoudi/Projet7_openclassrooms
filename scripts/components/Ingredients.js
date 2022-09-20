@@ -17,9 +17,9 @@ export default class Ingredients extends Component {
         this.DOM.innerHTML = `
         <div class="btn-group" id="btnGroup">
         <div class="container">
-        <button type="text" id="btnOpen" name="ingredients" class="btn btn-primary" >
+        <button id="btnOpen" name="ingredients" class="btn btn-primary" >
         Ingredients </button>
-        <span class="toggle">  <i id="fas" class="fas fa-chevron-down"></i> </span>
+        <span class="toggle">  <i  class="fas fa-chevron-down"></i> </span>
         </div>
         <div class="dropdown-menu" id="menuIngredients">
         <p> </p>
