@@ -251,6 +251,8 @@ function Filter(valeur) {
 
     new _msgNoRecipe["default"](_target);
   }
+
+  return result;
 } // function filter recipes by tag
 
 

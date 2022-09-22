@@ -196,6 +196,7 @@ function Filter(valeur) {
         let target = document.querySelector("#listCard");
         new MsgNoRecipes(target);
     }
+    return result;
 }
 
 
