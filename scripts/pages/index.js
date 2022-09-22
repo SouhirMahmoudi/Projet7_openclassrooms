@@ -131,7 +131,7 @@ btn2.addEventListener("click", (e) => {
         FilterApplianceByTag(TagAppliance.value);
         const NewItems = document.querySelectorAll("#menuAppareils .dropdown-item");
         NewItems.forEach(item => item.addEventListener("click", (e) => {
-            new Tag(TargetTag1, "ustensils", e.target.innerHTML, e.target.innerHTML);
+            new Tag(TargetTag1, "appareils", e.target.innerHTML, e.target.innerHTML);
             const tag = { text: e.target.textContent, type: "appareils" };
             tagList.push(tag);
             FilterTag();

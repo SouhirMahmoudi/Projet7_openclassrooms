@@ -153,7 +153,7 @@ btn2.addEventListener("click", function (e) {
     var NewItems = document.querySelectorAll("#menuAppareils .dropdown-item");
     NewItems.forEach(function (item) {
       return item.addEventListener("click", function (e) {
-        new _Tag["default"](TargetTag1, "ustensils", e.target.innerHTML, e.target.innerHTML);
+        new _Tag["default"](TargetTag1, "appareils", e.target.innerHTML, e.target.innerHTML);
         var tag = {
           text: e.target.textContent,
           type: "appareils"
