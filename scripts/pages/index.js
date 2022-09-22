@@ -24,6 +24,7 @@ const searchBar = document.getElementById("searchBar");
 searchBar.addEventListener("keyup", function (e) {
     if (searchBar.value.length >= 3) {
         Filter(searchBar.value)
+        removeTag();
     }
 
     else if (searchBar.value.length == 0) {
@@ -196,6 +197,7 @@ function Filter(valeur) {
         let target = document.querySelector("#listCard");
         new MsgNoRecipes(target);
     }
+    return result;
 }
 
 

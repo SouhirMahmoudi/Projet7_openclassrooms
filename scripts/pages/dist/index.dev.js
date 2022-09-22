@@ -43,6 +43,7 @@ var searchBar = document.getElementById("searchBar");
 searchBar.addEventListener("keyup", function (e) {
   if (searchBar.value.length >= 3) {
     Filter(searchBar.value);
+    removeTag();
   } else if (searchBar.value.length == 0) {
     ingredientFilter.props = _recipes["default"];
     ingredientFilter.GetIngredientslist();
@@ -251,6 +252,8 @@ function Filter(valeur) {
 
     new _msgNoRecipe["default"](_target);
   }
+
+  return result;
 } // function filter recipes by tag
 
 
