@@ -173,7 +173,7 @@ function Filter(valeur) {
     let value = valeur.toLowerCase();
     let result = [];
     for (let recipe of recipes) {
-        //recipes.forEach(recipe=>)
+        recipes.forEach(recipe=>{
         if ((recipe.name.toLowerCase().includes(value)) || (recipe.description.toLowerCase().includes(value))
             || (recipe.ingredients.some((ingredient => {
                 ingredient.ingredient.toLowerCase().includes(value)
@@ -182,7 +182,7 @@ function Filter(valeur) {
             result.push(recipe)
         }
 
-    }
+    })}
 
     appareilFilter.props = result;
     appareilFilter.GetApplianceList();

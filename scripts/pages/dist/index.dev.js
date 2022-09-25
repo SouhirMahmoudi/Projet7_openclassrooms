@@ -216,12 +216,13 @@ function Filter(valeur) {
     for (var _iterator2 = _recipes["default"][Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
       var recipe = _step2.value;
 
-      //recipes.forEach(recipe=>)
-      if (recipe.name.toLowerCase().includes(value) || recipe.description.toLowerCase().includes(value) || recipe.ingredients.some(function (ingredient) {
-        ingredient.ingredient.toLowerCase().includes(value);
-      })) {
-        result.push(recipe);
-      }
+      _recipes["default"].forEach(function (recipe) {
+        if (recipe.name.toLowerCase().includes(value) || recipe.description.toLowerCase().includes(value) || recipe.ingredients.some(function (ingredient) {
+          ingredient.ingredient.toLowerCase().includes(value);
+        })) {
+          result.push(recipe);
+        }
+      });
     }
   } catch (err) {
     _didIteratorError2 = true;
